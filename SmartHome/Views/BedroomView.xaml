@@ -1,0 +1,159 @@
+<UserControl x:Class="SmartHome.Views.BedroomView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="{StaticResource BgPrimary}" FontFamily="Segoe UI">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" BorderBrush="{StaticResource BorderSub}" BorderThickness="0,0,0,1" Padding="16,12,16,8">
+            <StackPanel>
+                <TextBlock Text="안방" FontSize="14" FontWeight="Medium" Foreground="{StaticResource TextPrimary}"/>
+                <TextBlock Text="수면 케어 — 5개 기능" FontSize="11" Foreground="{StaticResource TextDisabled}" Margin="0,2,0,0"/>
+            </StackPanel>
+        </Border>
+        <Border Grid.Row="1" BorderBrush="{StaticResource BorderSub}" BorderThickness="0,0,0,1" Padding="16,7">
+            <StackPanel Orientation="Horizontal" Spacing="2">
+                <Border Background="Transparent" BorderBrush="{StaticResource BorderSub}" BorderThickness="1" CornerRadius="4" Padding="11,4"><TextBlock Text="현관" FontSize="11" Foreground="{StaticResource TextDisabled}"/></Border>
+                <Border Background="Transparent" BorderBrush="{StaticResource BorderSub}" BorderThickness="1" CornerRadius="4" Padding="11,4"><TextBlock Text="거실" FontSize="11" Foreground="{StaticResource TextDisabled}"/></Border>
+                <Border Background="Transparent" BorderBrush="{StaticResource BorderSub}" BorderThickness="1" CornerRadius="4" Padding="11,4"><TextBlock Text="주방" FontSize="11" Foreground="{StaticResource TextDisabled}"/></Border>
+                <Border Background="#1E3A5F" BorderBrush="#2A4A7F" BorderThickness="1" CornerRadius="4" Padding="11,4"><TextBlock Text="안방" FontSize="11" Foreground="{StaticResource TextPrimary}"/></Border>
+                <Border Background="Transparent" BorderBrush="{StaticResource BorderSub}" BorderThickness="1" CornerRadius="4" Padding="11,4"><TextBlock Text="욕실" FontSize="11" Foreground="{StaticResource TextDisabled}"/></Border>
+            </StackPanel>
+        </Border>
+        <Grid Grid.Row="2" Margin="16,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="160"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Spacing="8" Margin="0,0,8,0">
+                <Grid>
+                    <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                    <!-- 알람 연동 조명 -->
+                    <Border Grid.Column="0" Style="{StaticResource CardStyle}" Margin="0,0,4,0">
+                        <StackPanel>
+                            <Grid Margin="0,0,0,8">
+                                <TextBlock Text="알람 연동 조명" Style="{StaticResource CardTitle}"/>
+                                <Border HorizontalAlignment="Right" CornerRadius="3" Background="#1A2E1A" BorderBrush="{StaticResource BorderGreen}" BorderThickness="1" Padding="7,1">
+                                    <TextBlock Text="설정됨" FontSize="10" Foreground="{StaticResource AccentGreen}"/></Border>
+                            </Grid>
+                            <Grid Margin="0,0,0,6">
+                                <TextBlock Text="알람 연동" FontSize="12" FontWeight="Medium" Foreground="{StaticResource TextSecondary}" VerticalAlignment="Center"/>
+                                <ToggleButton Style="{StaticResource ToggleStyle}" HorizontalAlignment="Right" IsChecked="True"/>
+                            </Grid>
+                            <TextBlock Text="기상 시간" FontSize="10" Foreground="{StaticResource TextMuted}" Margin="0,0,0,4"/>
+                            <Border Background="{StaticResource BgDeep}" BorderBrush="{StaticResource BorderCard}" BorderThickness="1" CornerRadius="4" Padding="10,6" Margin="0,0,0,8">
+                                <TextBlock Text="07:00" FontSize="16" FontWeight="Medium" Foreground="{StaticResource TextPrimary}" HorizontalAlignment="Center" FontFamily="Consolas"/>
+                            </Border>
+                            <TextBlock Text="점등 밝기" FontSize="10" Foreground="{StaticResource TextMuted}" Margin="0,0,0,3"/>
+                            <Grid>
+                                <Slider x:Name="AlarmBrightness" Style="{StaticResource GreenSlider}" Minimum="0" Maximum="100" Value="80"/>
+                                <TextBlock Text="{Binding ElementName=AlarmBrightness, Path=Value, StringFormat={}{0:0}%}" FontSize="10" FontWeight="Medium" Foreground="{StaticResource TextSecondary}" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+                    <!-- 블라인드 -->
+                    <Border Grid.Column="1" Style="{StaticResource CardStyle}" Margin="4,0,0,0">
+                        <StackPanel>
+                            <Grid Margin="0,0,0,8">
+                                <TextBlock Text="블라인드" Style="{StaticResource CardTitle}"/>
+                                <Border HorizontalAlignment="Right" CornerRadius="3" Background="#1A2E1A" BorderBrush="{StaticResource BorderGreen}" BorderThickness="1" Padding="7,1">
+                                    <TextBlock Text="연동" FontSize="10" Foreground="{StaticResource AccentGreen}"/></Border>
+                            </Grid>
+                            <Grid Margin="0,0,0,8">
+                                <TextBlock Text="알람 자동 개방" FontSize="12" FontWeight="Medium" Foreground="{StaticResource TextSecondary}" VerticalAlignment="Center"/>
+                                <ToggleButton Style="{StaticResource ToggleStyle}" HorizontalAlignment="Right" IsChecked="True"/>
+                            </Grid>
+                            <TextBlock Text="개방 레벨" FontSize="10" Foreground="{StaticResource TextMuted}" Margin="0,0,0,3"/>
+                            <Grid Margin="0,0,0,8">
+                                <Slider x:Name="BlindLevel" Style="{StaticResource GreenSlider}" Minimum="0" Maximum="100" Value="100"/>
+                                <TextBlock Text="{Binding ElementName=BlindLevel, Path=Value, StringFormat={}{0:0}%}" FontSize="10" FontWeight="Medium" Foreground="{StaticResource TextSecondary}" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+                            </Grid>
+                            <Border Background="#0A1A0A" BorderBrush="{StaticResource AccentGreenDark}" BorderThickness="2,0,0,0" Padding="8,5">
+                                <TextBlock Text="알람 시 완전 개방" FontSize="10" Foreground="#7ABB7A"/>
+                            </Border>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                    <!-- 수면 모드 -->
+                    <Border Grid.Column="0" Background="#0F1A0F" BorderBrush="#1A3A1A" BorderThickness="1" CornerRadius="7" Padding="12" Margin="0,0,4,0">
+                        <StackPanel>
+                            <Grid Margin="0,0,0,8">
+                                <TextBlock Text="수면 모드" FontSize="10" Foreground="#5A8A5A"/>
+                                <Border HorizontalAlignment="Right" CornerRadius="3" Background="#1F2937" BorderBrush="{StaticResource BorderSub}" BorderThickness="1" Padding="7,1">
+                                    <TextBlock Text="대기" FontSize="10" Foreground="{StaticResource TextDisabled}"/></Border>
+                            </Grid>
+                            <Grid Margin="0,0,0,8">
+                                <TextBlock Text="수면 모드" FontSize="12" FontWeight="Medium" Foreground="{StaticResource TextSecondary}" VerticalAlignment="Center"/>
+                                <ToggleButton Style="{StaticResource ToggleStyle}" HorizontalAlignment="Right" IsChecked="False"/>
+                            </Grid>
+                            <Border Background="{StaticResource BgDeep}" BorderBrush="{StaticResource BorderCard}" BorderThickness="2,0,0,0" Padding="8,5">
+                                <StackPanel>
+                                    <TextBlock Text="활성 시 — 대기전력 차단" FontSize="10" Foreground="{StaticResource TextMuted}"/>
+                                    <TextBlock Text="저소음 환경 자동 조성" FontSize="10" Foreground="{StaticResource TextMuted}" Margin="0,2,0,0"/>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </Border>
+                    <!-- 조명 수동 -->
+                    <Border Grid.Column="1" Style="{StaticResource CardStyle}" Margin="4,0,0,0">
+                        <StackPanel>
+                            <Grid Margin="0,0,0,8">
+                                <TextBlock Text="조명 수동" Style="{StaticResource CardTitle}"/>
+                                <Border HorizontalAlignment="Right" CornerRadius="3" Background="#1F2937" BorderBrush="{StaticResource BorderSub}" BorderThickness="1" Padding="7,1">
+                                    <TextBlock Text="꺼짐" FontSize="10" Foreground="{StaticResource TextDisabled}"/></Border>
+                            </Grid>
+                            <TextBlock Text="밝기" FontSize="10" Foreground="{StaticResource TextMuted}" Margin="0,0,0,3"/>
+                            <Grid Margin="0,0,0,6">
+                                <Slider x:Name="ManualBrightness" Style="{StaticResource GreenSlider}" Minimum="0" Maximum="100" Value="0"/>
+                                <TextBlock Text="{Binding ElementName=ManualBrightness, Path=Value, StringFormat={}{0:0}%}" FontSize="10" FontWeight="Medium" Foreground="{StaticResource TextSecondary}" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+                            </Grid>
+                            <TextBlock Text="색온도" FontSize="10" Foreground="{StaticResource TextMuted}" Margin="0,0,0,3"/>
+                            <Grid>
+                                <Slider x:Name="ManualColorTemp" Style="{StaticResource GreenSlider}" Minimum="2700" Maximum="6500" Value="3000"/>
+                                <TextBlock Text="{Binding ElementName=ManualColorTemp, Path=Value, StringFormat={}{0:0}K}" FontSize="10" FontWeight="Medium" Foreground="{StaticResource TextSecondary}" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </StackPanel>
+            <!-- 우측 패널 -->
+            <StackPanel Grid.Column="1" Spacing="8">
+                <Border Style="{StaticResource CardStyle}">
+                    <StackPanel>
+                        <TextBlock Text="상태 요약" Style="{StaticResource SectionLabel}"/>
+                        <Grid Margin="0,4"><TextBlock Text="알람" FontSize="10" Foreground="{StaticResource TextMuted}"/><TextBlock Text="07:00" FontSize="10" FontWeight="Medium" Foreground="{StaticResource AccentGreen}" HorizontalAlignment="Right"/></Grid>
+                        <Separator Background="{StaticResource BorderSub}" Height="1"/>
+                        <Grid Margin="0,4"><TextBlock Text="블라인드" FontSize="10" Foreground="{StaticResource TextMuted}"/><TextBlock Text="닫힘" FontSize="10" FontWeight="Medium" Foreground="{StaticResource TextSecondary}" HorizontalAlignment="Right"/></Grid>
+                        <Separator Background="{StaticResource BorderSub}" Height="1"/>
+                        <Grid Margin="0,4"><TextBlock Text="수면 모드" FontSize="10" Foreground="{StaticResource TextMuted}"/><TextBlock Text="OFF" FontSize="10" FontWeight="Medium" Foreground="{StaticResource TextSecondary}" HorizontalAlignment="Right"/></Grid>
+                        <Separator Background="{StaticResource BorderSub}" Height="1"/>
+                        <Grid Margin="0,4"><TextBlock Text="조명" FontSize="10" Foreground="{StaticResource TextMuted}"/><TextBlock Text="OFF" FontSize="10" FontWeight="Medium" Foreground="{StaticResource TextSecondary}" HorizontalAlignment="Right"/></Grid>
+                        <Separator Background="{StaticResource BorderSub}" Height="1"/>
+                        <Grid Margin="0,4"><TextBlock Text="색온도" FontSize="10" Foreground="{StaticResource TextMuted}"/><TextBlock Text="3000K" FontSize="10" FontWeight="Medium" Foreground="{StaticResource TextSecondary}" HorizontalAlignment="Right"/></Grid>
+                    </StackPanel>
+                </Border>
+                <Border Style="{StaticResource CardStyle}">
+                    <StackPanel>
+                        <TextBlock Text="통합 알림 (최근 3건)" Style="{StaticResource SectionLabel}"/>
+                        <StackPanel Spacing="3">
+                            <Border Background="#0A1A0A" BorderBrush="{StaticResource AccentGreenDark}" BorderThickness="2,0,0,0" CornerRadius="4" Padding="8,5">
+                                <Grid><TextBlock Text="알람 07:00 설정" FontSize="10" Foreground="#7ABB7A"/><StackPanel HorizontalAlignment="Right"><TextBlock Text="21:00" FontSize="9" Foreground="{StaticResource TextHint}"/><TextBlock Text="안방" FontSize="9" Foreground="{StaticResource TextHint}"/></StackPanel></Grid>
+                            </Border>
+                            <Border Background="{StaticResource BgDeep}" BorderBrush="{StaticResource BorderCard}" BorderThickness="2,0,0,0" CornerRadius="4" Padding="8,5">
+                                <Grid><TextBlock Text="수면 모드 대기" FontSize="10" Foreground="{StaticResource TextMuted}"/><StackPanel HorizontalAlignment="Right"><TextBlock Text="21:00" FontSize="9" Foreground="{StaticResource TextHint}"/><TextBlock Text="안방" FontSize="9" Foreground="{StaticResource TextHint}"/></StackPanel></Grid>
+                            </Border>
+                            <Border Background="#0A1A0A" BorderBrush="{StaticResource AccentGreenDark}" BorderThickness="2,0,0,0" CornerRadius="4" Padding="8,5">
+                                <Grid><TextBlock Text="냉방 가동" FontSize="10" Foreground="#7ABB7A"/><StackPanel HorizontalAlignment="Right"><TextBlock Text="20:10" FontSize="9" Foreground="{StaticResource TextHint}"/><TextBlock Text="거실" FontSize="9" Foreground="{StaticResource TextHint}"/></StackPanel></Grid>
+                            </Border>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

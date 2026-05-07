@@ -1,0 +1,177 @@
+<UserControl x:Class="SmartHome.Views.KitchenView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="{StaticResource BgPrimary}" FontFamily="Segoe UI">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" BorderBrush="{StaticResource BorderSub}" BorderThickness="0,0,0,1" Padding="16,12,16,8">
+            <StackPanel>
+                <TextBlock Text="주방" FontSize="14" FontWeight="Medium" Foreground="{StaticResource TextPrimary}"/>
+                <TextBlock Text="안전 및 위생 — 5개 기능" FontSize="11" Foreground="{StaticResource TextDisabled}" Margin="0,2,0,0"/>
+            </StackPanel>
+        </Border>
+        <Border Grid.Row="1" BorderBrush="{StaticResource BorderSub}" BorderThickness="0,0,0,1" Padding="16,7">
+            <StackPanel Orientation="Horizontal" Spacing="2">
+                <Border Background="Transparent" BorderBrush="{StaticResource BorderSub}" BorderThickness="1" CornerRadius="4" Padding="11,4"><TextBlock Text="현관" FontSize="11" Foreground="{StaticResource TextDisabled}"/></Border>
+                <Border Background="Transparent" BorderBrush="{StaticResource BorderSub}" BorderThickness="1" CornerRadius="4" Padding="11,4"><TextBlock Text="거실" FontSize="11" Foreground="{StaticResource TextDisabled}"/></Border>
+                <Border Background="#1E3A5F" BorderBrush="#2A4A7F" BorderThickness="1" CornerRadius="4" Padding="11,4"><TextBlock Text="주방" FontSize="11" Foreground="{StaticResource TextPrimary}"/></Border>
+                <Border Background="Transparent" BorderBrush="{StaticResource BorderSub}" BorderThickness="1" CornerRadius="4" Padding="11,4"><TextBlock Text="안방" FontSize="11" Foreground="{StaticResource TextDisabled}"/></Border>
+                <Border Background="Transparent" BorderBrush="{StaticResource BorderSub}" BorderThickness="1" CornerRadius="4" Padding="11,4"><TextBlock Text="욕실" FontSize="11" Foreground="{StaticResource TextDisabled}"/></Border>
+            </StackPanel>
+        </Border>
+        <Grid Grid.Row="2" Margin="16,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="160"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Spacing="8" Margin="0,0,8,0">
+                <Grid>
+                    <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                    <!-- 연기/가스 감지 — 위험 카드 -->
+                    <Border Grid.Column="0" Style="{StaticResource DangerCardStyle}" Margin="0,0,4,0">
+                        <StackPanel>
+                            <Grid Margin="0,0,0,8">
+                                <TextBlock Text="연기 / 가스 감지" FontSize="10" Foreground="#AA7070"/>
+                                <Border HorizontalAlignment="Right" CornerRadius="3" Background="#2A1010" BorderBrush="{StaticResource BorderDanger}" BorderThickness="1" Padding="7,1">
+                                    <TextBlock Text="경보" FontSize="10" Foreground="{StaticResource AccentRed}"/></Border>
+                            </Grid>
+                            <Grid Margin="0,0,0,6">
+                                <TextBlock Text="감지 모드" FontSize="12" FontWeight="Medium" Foreground="{StaticResource TextSecondary}" VerticalAlignment="Center"/>
+                                <ToggleButton Style="{StaticResource ToggleStyle}" HorizontalAlignment="Right" IsChecked="True"/>
+                            </Grid>
+                            <Border Background="#1A0808" BorderBrush="{StaticResource AccentRed}" BorderThickness="2,0,0,0" Padding="8,5" Margin="0,0,0,8">
+                                <StackPanel>
+                                    <TextBlock Text="연기 감지 — 인덕션 강제 종료" FontSize="10" Foreground="{StaticResource AccentRed}"/>
+                                    <TextBlock Text="21:20 · 환풍기 자동 가동" FontSize="9" Foreground="#AA5555" Margin="0,2,0,0"/>
+                                </StackPanel>
+                            </Border>
+                            <Button Content="경보 해제" Style="{StaticResource DangerButton}" HorizontalAlignment="Stretch"/>
+                        </StackPanel>
+                    </Border>
+                    <!-- 인덕션 카드 -->
+                    <Border Grid.Column="1" Style="{StaticResource CardStyle}" Margin="4,0,0,0">
+                        <StackPanel>
+                            <Grid Margin="0,0,0,8">
+                                <TextBlock Text="인덕션 / 과열" Style="{StaticResource CardTitle}"/>
+                                <Border HorizontalAlignment="Right" CornerRadius="3" Background="#1F2937" BorderBrush="{StaticResource BorderSub}" BorderThickness="1" Padding="7,1">
+                                    <TextBlock Text="대기" FontSize="10" Foreground="{StaticResource TextDisabled}"/></Border>
+                            </Grid>
+                            <Grid Margin="0,0,0,8">
+                                <TextBlock Text="인덕션 전원" FontSize="12" FontWeight="Medium" Foreground="{StaticResource TextSecondary}" VerticalAlignment="Center"/>
+                                <ToggleButton Style="{StaticResource ToggleStyle}" HorizontalAlignment="Right" IsChecked="False"/>
+                            </Grid>
+                            <Border Background="{StaticResource BgDeep}" BorderBrush="{StaticResource BorderCard}" BorderThickness="1" CornerRadius="4" Padding="9,6" Margin="0,0,0,8">
+                                <Grid>
+                                    <TextBlock Text="사용 시간" FontSize="10" Foreground="{StaticResource TextMuted}" VerticalAlignment="Center"/>
+                                    <TextBlock Text="00:00" FontSize="14" FontWeight="Medium" Foreground="{StaticResource TextSecondary}" HorizontalAlignment="Right" FontFamily="Consolas"/>
+                                </Grid>
+                            </Border>
+                            <TextBlock Text="자동 종료 타이머: 30분" FontSize="10" Foreground="{StaticResource TextMuted}"/>
+                            <Border Background="#0A1A0A" BorderBrush="{StaticResource AccentGreenDark}" BorderThickness="2,0,0,0" Padding="8,5" Margin="0,6,0,0">
+                                <TextBlock Text="미사용 중 — 정상" FontSize="10" Foreground="#7ABB7A"/>
+                            </Border>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                    <!-- 환풍기 카드 -->
+                    <Border Grid.Column="0" Style="{StaticResource CardStyle}" Margin="0,0,4,0">
+                        <StackPanel>
+                            <Grid Margin="0,0,0,8">
+                                <TextBlock Text="환풍기" Style="{StaticResource CardTitle}"/>
+                                <Border HorizontalAlignment="Right" CornerRadius="3" Background="#1A2E1A" BorderBrush="{StaticResource BorderGreen}" BorderThickness="1" Padding="7,1">
+                                    <TextBlock Text="가동" FontSize="10" Foreground="{StaticResource AccentGreen}"/></Border>
+                            </Grid>
+                            <Grid Margin="0,0,0,8">
+                                <TextBlock Text="환풍기" FontSize="12" FontWeight="Medium" Foreground="{StaticResource TextSecondary}" VerticalAlignment="Center"/>
+                                <ToggleButton Style="{StaticResource ToggleStyle}" HorizontalAlignment="Right" IsChecked="True"/>
+                            </Grid>
+                            <Grid>
+                                <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                                <Border Grid.Column="0" Background="{StaticResource BgDeep}" BorderBrush="{StaticResource BorderCard}" BorderThickness="1" CornerRadius="3" Padding="0,4" Margin="0,0,2,0"><TextBlock Text="1단" FontSize="10" Foreground="{StaticResource TextDisabled}" HorizontalAlignment="Center"/></Border>
+                                <Border Grid.Column="1" Background="{StaticResource BgDeep}" BorderBrush="{StaticResource BorderCard}" BorderThickness="1" CornerRadius="3" Padding="0,4" Margin="2,0"><TextBlock Text="2단" FontSize="10" Foreground="{StaticResource TextDisabled}" HorizontalAlignment="Center"/></Border>
+                                <Border Grid.Column="2" Background="#1E3A5F" BorderBrush="{StaticResource BorderActive}" BorderThickness="1" CornerRadius="3" Padding="0,4" Margin="2,0"><TextBlock Text="3단" FontSize="10" Foreground="{StaticResource TextPrimary}" HorizontalAlignment="Center"/></Border>
+                                <Border Grid.Column="3" Background="{StaticResource BgDeep}" BorderBrush="{StaticResource BorderCard}" BorderThickness="1" CornerRadius="3" Padding="0,4" Margin="2,0,0,0"><TextBlock Text="자동" FontSize="10" Foreground="{StaticResource TextDisabled}" HorizontalAlignment="Center"/></Border>
+                            </Grid>
+                            <Border Background="#1A0808" BorderBrush="{StaticResource AccentRed}" BorderThickness="2,0,0,0" Padding="8,5" Margin="0,8,0,0">
+                                <TextBlock Text="연기 감지 — 강제 최대" FontSize="10" Foreground="{StaticResource AccentRed}"/>
+                            </Border>
+                        </StackPanel>
+                    </Border>
+                    <!-- 냉장고 카드 -->
+                    <Border Grid.Column="1" Style="{StaticResource CardStyle}" Margin="4,0,0,0">
+                        <StackPanel>
+                            <Grid Margin="0,0,0,8">
+                                <TextBlock Text="냉장고" Style="{StaticResource CardTitle}"/>
+                                <Border HorizontalAlignment="Right" CornerRadius="3" Background="#1A2E1A" BorderBrush="{StaticResource BorderGreen}" BorderThickness="1" Padding="7,1">
+                                    <TextBlock Text="정상" FontSize="10" Foreground="{StaticResource AccentGreen}"/></Border>
+                            </Grid>
+                            <Grid Margin="0,0,0,8">
+                                <TextBlock Text="문 열림 알림" FontSize="12" FontWeight="Medium" Foreground="{StaticResource TextSecondary}" VerticalAlignment="Center"/>
+                                <ToggleButton Style="{StaticResource ToggleStyle}" HorizontalAlignment="Right" IsChecked="True"/>
+                            </Grid>
+                            <Grid>
+                                <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                                <Border Grid.Column="0" Background="{StaticResource BgDeep}" BorderBrush="{StaticResource BorderCard}" BorderThickness="1" CornerRadius="4" Padding="4,5" Margin="0,0,3,0">
+                                    <StackPanel HorizontalAlignment="Center">
+                                        <TextBlock Text="냉장" FontSize="9" Foreground="{StaticResource TextMuted}" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="3°C" FontSize="13" FontWeight="Medium" Foreground="{StaticResource TextPrimary}" HorizontalAlignment="Center" Margin="0,1,0,0"/>
+                                    </StackPanel>
+                                </Border>
+                                <Border Grid.Column="1" Background="{StaticResource BgDeep}" BorderBrush="{StaticResource BorderCard}" BorderThickness="1" CornerRadius="4" Padding="4,5" Margin="3,0,0,0">
+                                    <StackPanel HorizontalAlignment="Center">
+                                        <TextBlock Text="냉동" FontSize="9" Foreground="{StaticResource TextMuted}" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="-18°" FontSize="13" FontWeight="Medium" Foreground="{StaticResource TextPrimary}" HorizontalAlignment="Center" Margin="0,1,0,0"/>
+                                    </StackPanel>
+                                </Border>
+                            </Grid>
+                            <Border Background="#0A1A0A" BorderBrush="{StaticResource AccentGreenDark}" BorderThickness="2,0,0,0" Padding="8,5" Margin="0,8,0,0">
+                                <TextBlock Text="문 닫힘 — 온도 정상" FontSize="10" Foreground="#7ABB7A"/>
+                            </Border>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </StackPanel>
+            <!-- 우측 패널 -->
+            <StackPanel Grid.Column="1" Spacing="8">
+                <Border Style="{StaticResource CardStyle}">
+                    <StackPanel>
+                        <TextBlock Text="상태 요약" Style="{StaticResource SectionLabel}"/>
+                        <Grid Margin="0,4"><TextBlock Text="연기 감지" FontSize="10" Foreground="{StaticResource TextMuted}"/><TextBlock Text="경보!" FontSize="10" FontWeight="Medium" Foreground="{StaticResource AccentRed}" HorizontalAlignment="Right"/></Grid>
+                        <Separator Background="{StaticResource BorderSub}" Height="1"/>
+                        <Grid Margin="0,4"><TextBlock Text="인덕션" FontSize="10" Foreground="{StaticResource TextMuted}"/><TextBlock Text="OFF" FontSize="10" FontWeight="Medium" Foreground="{StaticResource TextSecondary}" HorizontalAlignment="Right"/></Grid>
+                        <Separator Background="{StaticResource BorderSub}" Height="1"/>
+                        <Grid Margin="0,4"><TextBlock Text="환풍기" FontSize="10" Foreground="{StaticResource TextMuted}"/><TextBlock Text="3단 강제" FontSize="10" FontWeight="Medium" Foreground="{StaticResource AccentRed}" HorizontalAlignment="Right"/></Grid>
+                        <Separator Background="{StaticResource BorderSub}" Height="1"/>
+                        <Grid Margin="0,4"><TextBlock Text="냉장" FontSize="10" Foreground="{StaticResource TextMuted}"/><TextBlock Text="3°C" FontSize="10" FontWeight="Medium" Foreground="{StaticResource AccentGreen}" HorizontalAlignment="Right"/></Grid>
+                        <Separator Background="{StaticResource BorderSub}" Height="1"/>
+                        <Grid Margin="0,4"><TextBlock Text="냉동" FontSize="10" Foreground="{StaticResource TextMuted}"/><TextBlock Text="-18°C" FontSize="10" FontWeight="Medium" Foreground="{StaticResource AccentGreen}" HorizontalAlignment="Right"/></Grid>
+                        <Separator Background="{StaticResource BorderSub}" Height="1"/>
+                        <Grid Margin="0,4"><TextBlock Text="냉장고 문" FontSize="10" Foreground="{StaticResource TextMuted}"/><TextBlock Text="닫힘" FontSize="10" FontWeight="Medium" Foreground="{StaticResource AccentGreen}" HorizontalAlignment="Right"/></Grid>
+                    </StackPanel>
+                </Border>
+                <Border Style="{StaticResource CardStyle}">
+                    <StackPanel>
+                        <TextBlock Text="통합 알림 (최근 3건)" Style="{StaticResource SectionLabel}"/>
+                        <StackPanel Spacing="3">
+                            <Border Background="#1A0808" BorderBrush="{StaticResource AccentRed}" BorderThickness="2,0,0,0" CornerRadius="4" Padding="8,5">
+                                <Grid><TextBlock Text="연기 감지 경보" FontSize="10" Foreground="{StaticResource AccentRed}"/><StackPanel HorizontalAlignment="Right"><TextBlock Text="21:20" FontSize="9" Foreground="{StaticResource TextHint}"/><TextBlock Text="주방" FontSize="9" Foreground="{StaticResource TextHint}"/></StackPanel></Grid>
+                            </Border>
+                            <Border Background="#1A0808" BorderBrush="{StaticResource AccentRed}" BorderThickness="2,0,0,0" CornerRadius="4" Padding="8,5">
+                                <Grid><TextBlock Text="침입 경고 발령" FontSize="10" Foreground="{StaticResource AccentRed}"/><StackPanel HorizontalAlignment="Right"><TextBlock Text="21:28" FontSize="9" Foreground="{StaticResource TextHint}"/><TextBlock Text="현관" FontSize="9" Foreground="{StaticResource TextHint}"/></StackPanel></Grid>
+                            </Border>
+                            <Border Background="#0A1A0A" BorderBrush="{StaticResource AccentGreenDark}" BorderThickness="2,0,0,0" CornerRadius="4" Padding="8,5">
+                                <Grid><TextBlock Text="냉장고 정상" FontSize="10" Foreground="#7ABB7A"/><StackPanel HorizontalAlignment="Right"><TextBlock Text="21:00" FontSize="9" Foreground="{StaticResource TextHint}"/><TextBlock Text="주방" FontSize="9" Foreground="{StaticResource TextHint}"/></StackPanel></Grid>
+                            </Border>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,175 @@
+<UserControl x:Class="SmartHome.Views.BathroomView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="{StaticResource BgPrimary}" FontFamily="Segoe UI">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" BorderBrush="{StaticResource BorderSub}" BorderThickness="0,0,0,1" Padding="16,12,16,8">
+            <StackPanel>
+                <TextBlock Text="욕실" FontSize="14" FontWeight="Medium" Foreground="{StaticResource TextPrimary}"/>
+                <TextBlock Text="편의 및 건강 — 5개 기능" FontSize="11" Foreground="{StaticResource TextDisabled}" Margin="0,2,0,0"/>
+            </StackPanel>
+        </Border>
+        <Border Grid.Row="1" BorderBrush="{StaticResource BorderSub}" BorderThickness="0,0,0,1" Padding="16,7">
+            <StackPanel Orientation="Horizontal" Spacing="2">
+                <Border Background="Transparent" BorderBrush="{StaticResource BorderSub}" BorderThickness="1" CornerRadius="4" Padding="11,4"><TextBlock Text="현관" FontSize="11" Foreground="{StaticResource TextDisabled}"/></Border>
+                <Border Background="Transparent" BorderBrush="{StaticResource BorderSub}" BorderThickness="1" CornerRadius="4" Padding="11,4"><TextBlock Text="거실" FontSize="11" Foreground="{StaticResource TextDisabled}"/></Border>
+                <Border Background="Transparent" BorderBrush="{StaticResource BorderSub}" BorderThickness="1" CornerRadius="4" Padding="11,4"><TextBlock Text="주방" FontSize="11" Foreground="{StaticResource TextDisabled}"/></Border>
+                <Border Background="Transparent" BorderBrush="{StaticResource BorderSub}" BorderThickness="1" CornerRadius="4" Padding="11,4"><TextBlock Text="안방" FontSize="11" Foreground="{StaticResource TextDisabled}"/></Border>
+                <Border Background="#1E3A5F" BorderBrush="#2A4A7F" BorderThickness="1" CornerRadius="4" Padding="11,4"><TextBlock Text="욕실" FontSize="11" Foreground="{StaticResource TextPrimary}"/></Border>
+            </StackPanel>
+        </Border>
+        <Grid Grid.Row="2" Margin="16,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="160"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Spacing="8" Margin="0,0,8,0">
+                <Grid>
+                    <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                    <!-- 습도/환풍기 -->
+                    <Border Grid.Column="0" Style="{StaticResource CardStyle}" Margin="0,0,4,0">
+                        <StackPanel>
+                            <Grid Margin="0,0,0,8">
+                                <TextBlock Text="습도 / 환풍기" Style="{StaticResource CardTitle}"/>
+                                <Border HorizontalAlignment="Right" CornerRadius="3" Background="#1A2E1A" BorderBrush="{StaticResource BorderGreen}" BorderThickness="1" Padding="7,1">
+                                    <TextBlock Text="가동" FontSize="10" Foreground="{StaticResource AccentGreen}"/></Border>
+                            </Grid>
+                            <Grid Margin="0,0,0,6">
+                                <TextBlock Text="자동 연동" FontSize="12" FontWeight="Medium" Foreground="{StaticResource TextSecondary}" VerticalAlignment="Center"/>
+                                <ToggleButton Style="{StaticResource ToggleStyle}" HorizontalAlignment="Right" IsChecked="True"/>
+                            </Grid>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,2">
+                                <TextBlock Text="72" FontSize="20" FontWeight="Medium" Foreground="{StaticResource TextPrimary}"/>
+                                <TextBlock Text="% 습도" FontSize="10" Foreground="{StaticResource TextMuted}" VerticalAlignment="Bottom" Margin="3,0,0,2"/>
+                            </StackPanel>
+                            <Border Height="3" CornerRadius="1" Background="{StaticResource BorderSub}" Margin="0,0,0,8">
+                                <Border HorizontalAlignment="Left" Width="130" Background="{StaticResource AccentGreenDark}" CornerRadius="1"/>
+                            </Border>
+                            <Grid>
+                                <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                                <Border Grid.Column="0" Background="{StaticResource BgDeep}" BorderBrush="{StaticResource BorderCard}" BorderThickness="1" CornerRadius="3" Padding="0,4" Margin="0,0,2,0"><TextBlock Text="1단" FontSize="10" Foreground="{StaticResource TextDisabled}" HorizontalAlignment="Center"/></Border>
+                                <Border Grid.Column="1" Background="#1E3A5F" BorderBrush="{StaticResource BorderActive}" BorderThickness="1" CornerRadius="3" Padding="0,4" Margin="2,0"><TextBlock Text="2단" FontSize="10" Foreground="{StaticResource TextPrimary}" HorizontalAlignment="Center"/></Border>
+                                <Border Grid.Column="2" Background="{StaticResource BgDeep}" BorderBrush="{StaticResource BorderCard}" BorderThickness="1" CornerRadius="3" Padding="0,4" Margin="2,0"><TextBlock Text="3단" FontSize="10" Foreground="{StaticResource TextDisabled}" HorizontalAlignment="Center"/></Border>
+                                <Border Grid.Column="3" Background="{StaticResource BgDeep}" BorderBrush="{StaticResource BorderCard}" BorderThickness="1" CornerRadius="3" Padding="0,4" Margin="2,0,0,0"><TextBlock Text="자동" FontSize="10" Foreground="{StaticResource TextDisabled}" HorizontalAlignment="Center"/></Border>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+                    <!-- 누수 감지 — 경보 -->
+                    <Border Grid.Column="1" Style="{StaticResource DangerCardStyle}" Margin="4,0,0,0">
+                        <StackPanel>
+                            <Grid Margin="0,0,0,8">
+                                <TextBlock Text="누수 감지" FontSize="10" Foreground="#AA7070"/>
+                                <Border HorizontalAlignment="Right" CornerRadius="3" Background="#2A1010" BorderBrush="{StaticResource BorderDanger}" BorderThickness="1" Padding="7,1">
+                                    <TextBlock Text="경보" FontSize="10" Foreground="{StaticResource AccentRed}"/></Border>
+                            </Grid>
+                            <Grid Margin="0,0,0,6">
+                                <TextBlock Text="감지 모드" FontSize="12" FontWeight="Medium" Foreground="{StaticResource TextSecondary}" VerticalAlignment="Center"/>
+                                <ToggleButton Style="{StaticResource ToggleStyle}" HorizontalAlignment="Right" IsChecked="True"/>
+                            </Grid>
+                            <Border Background="#1A0808" BorderBrush="{StaticResource AccentRed}" BorderThickness="2,0,0,0" Padding="8,5" Margin="0,0,0,8">
+                                <StackPanel>
+                                    <TextBlock Text="누수 감지 — 밸브 차단!" FontSize="10" Foreground="{StaticResource AccentRed}"/>
+                                    <TextBlock Text="21:15" FontSize="9" Foreground="#AA5555" Margin="0,2,0,0"/>
+                                </StackPanel>
+                            </Border>
+                            <Button Content="경보 해제" Style="{StaticResource DangerButton}" HorizontalAlignment="Stretch"/>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                    <!-- 욕조 물 받기 -->
+                    <Border Grid.Column="0" Style="{StaticResource CardStyle}" Margin="0,0,4,0">
+                        <StackPanel>
+                            <Grid Margin="0,0,0,8">
+                                <TextBlock Text="욕조 물 받기" Style="{StaticResource CardTitle}"/>
+                                <Border HorizontalAlignment="Right" CornerRadius="3" Background="#1A2E1A" BorderBrush="{StaticResource BorderGreen}" BorderThickness="1" Padding="7,1">
+                                    <TextBlock Text="진행 중" FontSize="10" Foreground="{StaticResource AccentGreen}"/></Border>
+                            </Grid>
+                            <Grid Margin="0,0,0,8">
+                                <TextBlock Text="원격 급수" FontSize="12" FontWeight="Medium" Foreground="{StaticResource TextSecondary}" VerticalAlignment="Center"/>
+                                <ToggleButton Style="{StaticResource ToggleStyle}" HorizontalAlignment="Right" IsChecked="True"/>
+                            </Grid>
+                            <TextBlock Text="수위" FontSize="10" Foreground="{StaticResource TextMuted}" Margin="0,0,0,3"/>
+                            <Grid Margin="0,0,0,6">
+                                <Slider x:Name="FillLevel" Style="{StaticResource GreenSlider}" Minimum="0" Maximum="100" Value="65"/>
+                                <TextBlock Text="{Binding ElementName=FillLevel, Path=Value, StringFormat={}{0:0}%}" FontSize="10" FontWeight="Medium" Foreground="{StaticResource TextSecondary}" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+                            </Grid>
+                            <Border Background="#0A1A0A" BorderBrush="{StaticResource AccentGreenDark}" BorderThickness="2,0,0,0" Padding="8,5">
+                                <TextBlock Text="급수 중 — 목표 100%" FontSize="10" Foreground="#7ABB7A"/>
+                            </Border>
+                        </StackPanel>
+                    </Border>
+                    <!-- 욕조 온도 -->
+                    <Border Grid.Column="1" Style="{StaticResource CardStyle}" Margin="4,0,0,0">
+                        <StackPanel>
+                            <Grid Margin="0,0,0,8">
+                                <TextBlock Text="욕조 온도" Style="{StaticResource CardTitle}"/>
+                                <Border HorizontalAlignment="Right" CornerRadius="3" Background="#1A2E1A" BorderBrush="{StaticResource BorderGreen}" BorderThickness="1" Padding="7,1">
+                                    <TextBlock Text="정상" FontSize="10" Foreground="{StaticResource AccentGreen}"/></Border>
+                            </Grid>
+                            <TextBlock Text="목표 온도" FontSize="10" Foreground="{StaticResource TextMuted}" Margin="0,0,0,3"/>
+                            <Grid Margin="0,0,0,8">
+                                <Slider x:Name="WaterTemp" Style="{StaticResource GreenSlider}" Minimum="20" Maximum="50" Value="38"/>
+                                <TextBlock Text="{Binding ElementName=WaterTemp, Path=Value, StringFormat={}{0:0}°C}" FontSize="10" FontWeight="Medium" Foreground="{StaticResource TextSecondary}" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+                            </Grid>
+                            <Grid>
+                                <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                                <Border Grid.Column="0" Background="{StaticResource BgDeep}" BorderBrush="{StaticResource BorderCard}" BorderThickness="1" CornerRadius="4" Padding="4,5" Margin="0,0,3,0">
+                                    <StackPanel HorizontalAlignment="Center">
+                                        <TextBlock Text="현재" FontSize="9" Foreground="{StaticResource TextMuted}" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="36°C" FontSize="13" FontWeight="Medium" Foreground="{StaticResource TextPrimary}" HorizontalAlignment="Center" Margin="0,1,0,0"/>
+                                    </StackPanel>
+                                </Border>
+                                <Border Grid.Column="1" Background="{StaticResource BgDeep}" BorderBrush="{StaticResource BorderCard}" BorderThickness="1" CornerRadius="4" Padding="4,5" Margin="3,0,0,0">
+                                    <StackPanel HorizontalAlignment="Center">
+                                        <TextBlock Text="목표" FontSize="9" Foreground="{StaticResource TextMuted}" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="38°C" FontSize="13" FontWeight="Medium" Foreground="{StaticResource TextPrimary}" HorizontalAlignment="Center" Margin="0,1,0,0"/>
+                                    </StackPanel>
+                                </Border>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </StackPanel>
+            <!-- 우측 패널 -->
+            <StackPanel Grid.Column="1" Spacing="8">
+                <Border Style="{StaticResource CardStyle}">
+                    <StackPanel>
+                        <TextBlock Text="상태 요약" Style="{StaticResource SectionLabel}"/>
+                        <Grid Margin="0,4"><TextBlock Text="습도" FontSize="10" Foreground="{StaticResource TextMuted}"/><TextBlock Text="72%" FontSize="10" FontWeight="Medium" Foreground="{StaticResource TextSecondary}" HorizontalAlignment="Right"/></Grid>
+                        <Separator Background="{StaticResource BorderSub}" Height="1"/>
+                        <Grid Margin="0,4"><TextBlock Text="환풍기" FontSize="10" Foreground="{StaticResource TextMuted}"/><TextBlock Text="2단" FontSize="10" FontWeight="Medium" Foreground="{StaticResource AccentGreen}" HorizontalAlignment="Right"/></Grid>
+                        <Separator Background="{StaticResource BorderSub}" Height="1"/>
+                        <Grid Margin="0,4"><TextBlock Text="누수 감지" FontSize="10" Foreground="{StaticResource TextMuted}"/><TextBlock Text="경보!" FontSize="10" FontWeight="Medium" Foreground="{StaticResource AccentRed}" HorizontalAlignment="Right"/></Grid>
+                        <Separator Background="{StaticResource BorderSub}" Height="1"/>
+                        <Grid Margin="0,4"><TextBlock Text="급수" FontSize="10" Foreground="{StaticResource TextMuted}"/><TextBlock Text="65%" FontSize="10" FontWeight="Medium" Foreground="{StaticResource AccentGreen}" HorizontalAlignment="Right"/></Grid>
+                        <Separator Background="{StaticResource BorderSub}" Height="1"/>
+                        <Grid Margin="0,4"><TextBlock Text="욕조 온도" FontSize="10" Foreground="{StaticResource TextMuted}"/><TextBlock Text="36°C" FontSize="10" FontWeight="Medium" Foreground="{StaticResource TextSecondary}" HorizontalAlignment="Right"/></Grid>
+                    </StackPanel>
+                </Border>
+                <Border Style="{StaticResource CardStyle}">
+                    <StackPanel>
+                        <TextBlock Text="통합 알림 (최근 3건)" Style="{StaticResource SectionLabel}"/>
+                        <StackPanel Spacing="3">
+                            <Border Background="#1A0808" BorderBrush="{StaticResource AccentRed}" BorderThickness="2,0,0,0" CornerRadius="4" Padding="8,5">
+                                <Grid><TextBlock Text="누수 감지 — 밸브 차단" FontSize="10" Foreground="{StaticResource AccentRed}"/><StackPanel HorizontalAlignment="Right"><TextBlock Text="21:15" FontSize="9" Foreground="{StaticResource TextHint}"/><TextBlock Text="욕실" FontSize="9" Foreground="{StaticResource TextHint}"/></StackPanel></Grid>
+                            </Border>
+                            <Border Background="#1A0808" BorderBrush="{StaticResource AccentRed}" BorderThickness="2,0,0,0" CornerRadius="4" Padding="8,5">
+                                <Grid><TextBlock Text="침입 경고 발령" FontSize="10" Foreground="{StaticResource AccentRed}"/><StackPanel HorizontalAlignment="Right"><TextBlock Text="21:28" FontSize="9" Foreground="{StaticResource TextHint}"/><TextBlock Text="현관" FontSize="9" Foreground="{StaticResource TextHint}"/></StackPanel></Grid>
+                            </Border>
+                            <Border Background="#0A1A0A" BorderBrush="{StaticResource AccentGreenDark}" BorderThickness="2,0,0,0" CornerRadius="4" Padding="8,5">
+                                <Grid><TextBlock Text="욕조 급수 시작" FontSize="10" Foreground="#7ABB7A"/><StackPanel HorizontalAlignment="Right"><TextBlock Text="21:10" FontSize="9" Foreground="{StaticResource TextHint}"/><TextBlock Text="욕실" FontSize="9" Foreground="{StaticResource TextHint}"/></StackPanel></Grid>
+                            </Border>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>
